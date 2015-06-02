@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-sm-4 col-sm-offset-4">
             @foreach($errors->all() as $error)
-                <div class="alert alert-danger" style="padding:5px;">{{$error}}</div>
+                <div class="alert alert-danger" style="padding:5px;"><span class="glyphicon glyphicon-warning-sign"></span>{{$error}}</div>
             @endforeach
             <form method="post" action="{{url('admin/post')}}" enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="{{csrf_token()}}"/>
@@ -20,7 +20,7 @@
                 <br/>
                 <strong>Image:</strong>
                 <input type="file" name="image"/>
-                <input type="submit" class="btn btn-primary" value="Create"/>
+                <button type="submit" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-plus"></span> Create</button>
             </form>
         </div>
     </div>

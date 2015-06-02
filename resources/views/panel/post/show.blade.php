@@ -8,12 +8,14 @@
     <div class="container">
         <h3>{{$post->title}}</h3>
         @if($post->image!="")
-            <img src="{{url('posts/'.$post->id.'/'.$post->image)}}" class="img-responsive "/>
+            <img src="{{url('posts/'.$post->id.'/'.$post->image)}}" class="img-thumbnail"/><br/><br/>
         @endif
         <p>{{$post->content}}</p>
 
+        <h3><span class="glyphicon glyphicon-comment"></span> Comments</h3>
+        <hr/>
         <div class="row">
-            <div class="col-sm-6 col-sm-offset-3">
+            <div class="col-sm-6">
                 @foreach($errors->all() as $error)
                     <div class="alert alert-danger" style="padding:5px;">{{$error}}</div>
                 @endforeach
@@ -30,12 +32,13 @@
                 <form method="post" action="{{url('comment/create')}}">
                     <input type="hidden" name="_token" value="{{csrf_token()}}"/>
                     <input type="hidden" name="post_id" value="{{$post->id}}"/>
-                    <strong>Name:</strong>
+                    <strong>Your Name:</strong>
                     <input type="text" name="name" class="form-control" maxlength="50"/><br>
                     <strong>Comment:</strong>
                     <textarea name="comment" class="form-control" rows="4"></textarea>
                     <br/>
-                    <input type="submit" value="Comment"/>
+                    <button type="submit" class="btn btn-primary btn-sm"/>
+                    <span class="glyphicon glyphicon-comment"></span> Comment</button>
                 </form>
             </div>
         </div>
