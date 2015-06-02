@@ -11,6 +11,7 @@ class PostRepository implements PostRepositoryInterface
 
     public function save($request, $post)
     {
+        $hasBeforeImage = $post->image != "" ? 1 : 0;
         $post->title = e($request->input('title'));
         $post->content = e($request->input('post'));
         if ($request->hasFile('image')) {
@@ -19,6 +20,9 @@ class PostRepository implements PostRepositoryInterface
         }
         $post->save();
         if ($request->hasFile('image')) {
+            if ($hasBeforeImage) {
+                \File::deleteDirectory("posts/" . $post->id);
+            }
             $image->move('posts/' . $post->id . '/', $request->file('image')->getClientOriginalName());
         }
     }
@@ -27,7 +31,7 @@ class PostRepository implements PostRepositoryInterface
     {
 
         if ($post->image != "") {
-            \File::deleteDirectory("posts/" . $post->id );
+            \File::deleteDirectory("posts/" . $post->id);
         }
         $post->comments()->delete();
         $post->delete();
