@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddAuthorColumnToPostsTable' => $baseDir . '/database/migrations/2015_06_02_091909_add_author_column_to_posts_table.php',
     'CreateCommentsTable' => $baseDir . '/database/migrations/2015_06_02_091406_create_comments_table.php',
     'CreatePostsTable' => $baseDir . '/database/migrations/2015_06_02_091029_create_posts_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
