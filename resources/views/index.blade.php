@@ -8,6 +8,9 @@
     <div class="container">
         @foreach($posts as $post)
             <h3><a href="{{url('post/'.$post->id)}}">{{$post->title}}</a></h3>
+            @if($post->image!="")
+                <img src="{{url('posts/'.$post->id.'/'.$post->image)}}" class="img-responsive"/>
+                @endif
             <small><span class="glyphicon glyphicon-comment"></span> {{$post->comments()->count()}} Comments</small>
             <p>{{$post->content}}</p>
             <hr/>

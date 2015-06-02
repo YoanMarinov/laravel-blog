@@ -147,6 +147,7 @@ return [
 		'App\Providers\RouteServiceProvider',
 		'App\Providers\UserServiceProvider',
 		'App\Providers\PostServiceProvider',
+		'App\Providers\CommentServiceProvider',
 
 	],
 

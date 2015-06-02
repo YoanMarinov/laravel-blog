@@ -11,13 +11,15 @@
             @foreach($errors->all() as $error)
                 <div class="alert alert-danger" style="padding:5px;">{{$error}}</div>
             @endforeach
-            <form method="post" action="{{url('admin/post')}}">
+            <form method="post" action="{{url('admin/post')}}" enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="{{csrf_token()}}"/>
                 <strong>Title:</strong>
                 <input class="form-control" type="text" name="title"/>
                 <strong>Post:</strong>
                 <textarea class="form-control" name="post" rows="10"></textarea>
                 <br/>
+                <strong>Image:</strong>
+                <input type="file" name="image"/>
                 <input type="submit" class="btn btn-primary" value="Create"/>
             </form>
         </div>

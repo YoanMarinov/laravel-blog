@@ -6,6 +6,7 @@ post('login', 'PanelController@login');
 get('register', 'RegistrationController@index');
 post('register', 'RegistrationController@register');
 get('post/{id}', 'PostController@show');
+post('comment/create', 'CommentController@create');
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     get('post/{id}/delete', 'PostController@destroy');
     get('dashboard', 'PanelController@dashboard');
