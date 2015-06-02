@@ -11,15 +11,18 @@
             @if(Session::has('error'))
                 <div class="alert alert-danger" style="padding:5px;">{{Session::get('error')}}</div>
             @endif
-                <form method="post" action="{{url('login')}}">
-                    <input type="hidden" name="_token" value="{{csrf_token()}}"/>
-                    <strong>Email:</strong>
-                    <input class="form-control" type="text" name="email"/>
-                    <strong>Password:</strong>
-                    <input class="form-control" type="password" name="password"/>
-                    <br/>
-                    <input type="submit" class="btn btn-primary" value="Login"/>
-                </form>
+            @if(Session::has('success'))
+                <div class="alert alert-success" style="padding:5px;">{{Session::get('success')}}</div>
+            @endif
+            <form method="post" action="{{url('login')}}">
+                <input type="hidden" name="_token" value="{{csrf_token()}}"/>
+                <strong>Email:</strong>
+                <input class="form-control" type="text" name="email"/>
+                <strong>Password:</strong>
+                <input class="form-control" type="password" name="password"/>
+                <br/>
+                <input type="submit" class="btn btn-primary" value="Login"/>
+            </form>
         </div>
     </div>
 

@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Contracts\UserRepositoryInterface;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -11,8 +12,11 @@ class RegistrationController extends Controller {
         return view('register');
     }
 
-    public function register(Requests\CreateAccountRequest $request){
-
+    public function register(Requests\CreateAccountRequest $request, UserRepositoryInterface $repo)
+    {
+        $repo->create($request);
+        return \Redirect::to('login')->with('success', 'Successfully created an account!');
     }
+
 
 }

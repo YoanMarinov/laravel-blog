@@ -2,8 +2,9 @@
 
 use Illuminate\Support\ServiceProvider;
 
-class UserServiceProvider extends ServiceProvider
+class PostServiceProvider extends ServiceProvider
 {
+
 
     /**
      * Register the application services.
@@ -12,7 +13,7 @@ class UserServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('App\Contracts\UserRepositoryInterface', 'App\Repositories\UserRepository');
-    }
+        $this->app->bind('App\Contracts\PostRepositoryInterface', 'App\Repositories\PostRepository');
+	}
 
 }

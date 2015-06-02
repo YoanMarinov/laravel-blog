@@ -17,10 +17,14 @@ class PanelController extends Controller
     public function login()
     {
         if (\Auth::attempt(['email' => \Request::input('email'), 'password' => \Request::input('password')])) {
-            return \Auth::intended('admin/dashboard');
+            return \Redirect::intended('admin/dashboard');
         } else {
             return \Redirect::back()->with('error', 'Wrong username/password');
         }
+    }
+
+    public function dashboard(){
+        return view('panel.index');
     }
 
 }

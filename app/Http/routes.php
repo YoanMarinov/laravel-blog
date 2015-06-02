@@ -6,7 +6,9 @@ post('login', 'PanelController@login');
 get('register', 'RegistrationController@index');
 post('register', 'RegistrationController@register');
 get('post/{id}', 'PostController@show');
-Route::group(['prefix' => 'panel', 'middleware' => 'auth'], function () {
-    get('admin/dashboard', 'PanelController@dashboard');
-    resource('post', 'PostController', ['except' => 'index']);
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+    get('post/{id}/delete', 'PostController@destroy');
+    get('dashboard', 'PanelController@dashboard');
+    resource('post', 'PostController');
+    get('logout', 'UserController@logout');
 });
